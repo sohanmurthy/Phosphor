@@ -1,5 +1,7 @@
 ##PHOSPHOR
 
+<img src="https://pbs.twimg.com/media/C1lj1e2UsAAk71E.jpg" width="640">
+
 PHOSPHOR is a Processing sketch that powers an LED art installation on display at [Amino's](https://www.amino.com) office in San Francisco.  It controls 400 individually addressable LEDs through a variety of procedurally generated patterns.
 
 ###Installation:
