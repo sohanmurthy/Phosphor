@@ -10,7 +10,7 @@ PHOSPHOR is a Processing sketch that powers an LED art installation on display a
 2. Install the [FTDI interface for p9813 LEDs](https://github.com/PaintYourDragon/p9813) (OPTIONAL)
 3. Clone this repo into your Processing sketchbook folder
 
-If you aren't going to be using p9813 LEDs - or simply want to see a simulation of the LEDs in action - remove all code referencing the `TotalControl` library. P3LX natively supports a variety of protocols, like [Open Pixel Control](openpixelcontrol.org) and [Fadecandy](https://learn.adafruit.com/led-art-with-fadecandy/intro). If you're starting from scratch, you're very much better off using WS2812 (e.g. [Adafruit NeoPixel](https://learn.adafruit.com/adafruit-neopixel-uberguide/)) or a similarly well-supported chipset. I chose p9813 LEDs for the Amino piece simply because they were freely available at the time. As the old saying goes, "Free LEDs are better than no LEDs."
+If you aren't using p9813 LEDs - or just want to see a simulation of the LEDs in action - remove all code referencing the `TotalControl` library. P3LX natively supports a variety of protocols, like [Open Pixel Control](openpixelcontrol.org) and [Fadecandy](https://learn.adafruit.com/led-art-with-fadecandy/intro). If you're starting from scratch, you're very much better off using WS2812 (e.g. [Adafruit NeoPixel](https://learn.adafruit.com/adafruit-neopixel-uberguide/)) or a similarly well-supported chipset. I chose p9813 LEDs for the Amino piece because they were freely available at the time. As the old saying goes, "Free LEDs are better than no LEDs."
 
 ###Credits:
 
