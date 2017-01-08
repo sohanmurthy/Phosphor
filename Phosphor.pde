@@ -3,7 +3,7 @@
 PHOSPHOR
 by Sohan Murthy
 
-PHOSPHOR is a software package that powers an LED art
+PHOSPHOR is a Processing sketch that powers an LED art
 installation at Amino's (www.amino.com) office in
 San Francisco. It controls 400 individually addressable
 LEDs through a variety of procedurally generated
@@ -52,26 +52,27 @@ void setup() {
   // Set the patterns
   lx.setPatterns(new LXPattern[] {
     
-    new Graph(lx),
-    new Bubbles(lx),
     new AminoLogo(lx),
-    new Swarm(lx),
-    new DepthsOfSpace(lx),
+    new Bubbles(lx),
     new ColorWaves(lx),
     new Joiners(lx),
     new DiamondDroplets(lx),
     new Balls(lx),
-    new Swings(lx),
-    new Warp(lx),
     new Runners(lx),
+    new Graph(lx),
+    new StarryNight(lx),
+    new Pinwheel(lx, false),
+    new GameOfLife(lx),
+    new StarDroplets(lx),
+    new FunkyWave(lx),
+    new DepthsOfSpace(lx),
+    new Warp(lx),
     new Scatters(lx),
     new Rain(lx),
     new RoundDroplets(lx),
-    new StarryNight(lx),
-    new Pinwheel(lx,false),
     new Quilt(lx),
-    new StarDroplets(lx),
-    new FunkyWave(lx),
+    new Swarm(lx),
+    new Swings(lx)
 
   });
   

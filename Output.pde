@@ -3,8 +3,8 @@
 void p9813Output () {
   
   //Remaps LX pixels to physical arrangement of p9813 LEDs
-  //This installations arrnagement was crazy complex, hence the manual remap.
-  //If your arrangement is simpler, you could do the job with a for loop.
+  //This installation's arrangement was crazy complex, hence the manual remap.
+  //If your arrangement is simpler, you could do the job with a for loop or some other function.
   
   remap[285] = 399;  remap[286] = 379;  remap[297] = 359;  remap[298] = 339;  remap[309] = 319;  remap[310] = 299;  remap[321] = 279;  remap[322] = 259;  remap[333] = 239;  remap[334] = 219;  remap[345] = 199;  remap[346] = 179;  remap[357] = 159;  remap[358] = 139;  remap[369] = 119;  remap[370] = 99;  remap[381] = 79;  remap[382] = 59;  remap[393] = 39;  remap[394] = 19;
   remap[284] = 398;  remap[287] = 378;  remap[296] = 358;  remap[299] = 338;  remap[308] = 318;  remap[311] = 298;  remap[320] = 278;  remap[323] = 258;  remap[332] = 238;  remap[335] = 218;  remap[344] = 198;  remap[347] = 178;  remap[356] = 158;  remap[359] = 138;  remap[368] = 118;  remap[371] = 98;  remap[380] = 78;  remap[383] = 58;  remap[392] = 38;  remap[395] = 18;
