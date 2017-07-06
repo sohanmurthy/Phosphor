@@ -7,12 +7,7 @@ PHOSPHOR is a Processing sketch that powers an LED art installation on display a
 ###Installation:
 
 1. Download [Processing 3](https://processing.org/download/?processing)
-2. Install the [FTDI interface for p9813 LEDs](https://github.com/PaintYourDragon/p9813) (OPTIONAL)
+2. Install [Fadecandy server](https://github.com/scanlime/fadecandy)
 3. Clone this repo into your Processing sketchbook folder
 
-If you aren't using p9813 LEDs - or just want to see a simulation of the LEDs in action - remove all code referencing the `TotalControl` library. P3LX natively supports a variety of protocols, like [Open Pixel Control](openpixelcontrol.org) and [Fadecandy](https://learn.adafruit.com/led-art-with-fadecandy/intro). If you're starting from scratch, you're very much better off using WS2812 (e.g. [Adafruit NeoPixel](https://learn.adafruit.com/adafruit-neopixel-uberguide/)) or a similarly well-supported chipset. I chose p9813 LEDs for the Amino piece because they were freely available at the time. As the old saying goes, "Free LEDs are better than no LEDs."
-
-###Credits:
-
-* [Mark Slee](https://github.com/mcslee/) & [Heron Arts](https://github.com/heronarts/): P3LX Processing 3 harness for LX lighting engine - https://github.com/heronarts/P3LX
-* [Phillip Burgess](https://github.com/PaintYourDragon/): FTDI interface for p9813 LEDs - https://github.com/PaintYourDragon/p9813
+Special thanks to [Mark Slee](https://github.com/mcslee/) & [Heron Arts](https://github.com/heronarts/) for developing [LX Studio](https://github.com/heronarts/P3LX), which powers PHOSPHOR.
