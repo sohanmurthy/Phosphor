@@ -17,9 +17,9 @@ int[] buildPoints() {
   for (int strips = 0; strips < 20; strips = strips + 1) {
     for (int pixels_per_strip = 0; pixels_per_strip < 20; pixels_per_strip = pixels_per_strip + 1) {
       if (strips % 2 == 1) { 
-          pointIndices[i] = (((30-1)-pixels_per_strip)+(30*strips));
+          pointIndices[i] = (((20-1)-pixels_per_strip)+(20*strips));
       } else {
-          pointIndices[i] = (pixels_per_strip+30*strips);
+          pointIndices[i] = (pixels_per_strip+20*strips);
       }
       i++;
     } 
