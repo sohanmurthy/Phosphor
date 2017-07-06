@@ -86,7 +86,7 @@ class Squares extends LXPattern {
  
   private final SinLFO speed = new SinLFO(7500, 9500, 16000);
   private final SawLFO move = new SawLFO(TWO_PI, 0, speed);
-  private final SinLFO tight = new SinLFO(9.7, 10.4, 18000);
+  private final SinLFO tight = new SinLFO(10.3, 10.8, 18000);
   private final SinLFO hr = new SinLFO(90, 300, 25000);
   
   
@@ -243,7 +243,7 @@ class Shuffle extends LXPattern {
     private final QuadraticEnvelope px = new QuadraticEnvelope(0, 0, 0).setEase(QuadraticEnvelope.Ease.BOTH);
     private final QuadraticEnvelope py = new QuadraticEnvelope(0, 0, 0).setEase(QuadraticEnvelope.Ease.BOTH);
     ;  
-    private final SinLFO size = new SinLFO(4.3*INCHES, 9*INCHES, random(3000, 9000));
+    private final SinLFO size = new SinLFO(5*INCHES, 10*INCHES, random(3000, 9000));
     private final SinLFO sat = new SinLFO(45, 140, random(6000, 17000));
 
     Shuff(LX lx) {

@@ -6,13 +6,9 @@ by Sohan Murthy
 PHOSPHOR is a Processing sketch that powers an LED art
 installation at Amino's (www.amino.com) office in
 San Francisco. It controls 400 individually addressable
-LEDs through a variety of procedurally generated
-patterns.
-
-Special thanks to Mark Slee and Heron arts for
-developing LX Studio, which powers PHOSPHOR.
+LEDs through a variety of patterns procedurally generated
+via LX Studio.
  
-
 *********************************************************/
 
 import ddf.minim.*;
@@ -40,11 +36,12 @@ void setup() {
   // Set the patterns
   lx.setPatterns(new LXPattern[] {
     
-    new AminoLogo(lx),
+    
     new Shuffle(lx),
     new Squares(lx),
     new ColorWaves(lx),
     new Quilt(lx),
+    new AminoLogo(lx),
    
 
   });
