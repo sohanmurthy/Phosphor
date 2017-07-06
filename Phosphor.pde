@@ -11,19 +11,13 @@ patterns.
 
 Credits:
 
-  Mark Slee & Heron Arts:
-  P3LX Processing 3 harness for LX lighting engine
-  https://github.com/heronarts/P3LX
-  
-  and
-
-  Phillip Burgess:
-  FTDI interface for p9813 LEDs
-  https://github.com/PaintYourDragon/p9813
+Mark Slee & Heron Arts:
+P3LX Processing 3 harness for LX lighting engine
+https://github.com/heronarts/P3LX
+ 
 
 *********************************************************/
 
-import TotalControl.*;
 import ddf.minim.*;
 
 //Add some units! inches, feet, seconds, minutes
@@ -33,13 +27,10 @@ final static int SECONDS = 1000;
 final static int MINUTES = 60*SECONDS;
 
 Model model;
+LXOutput output;
 P3LX lx;
 UI3dComponent pointCloud;
-TotalControl tc;
 
-//create an array to store physical order of LEDs on the strand 
-int remap[] = new int[400];
-int i = 0;
 
 void setup() {
   
@@ -84,6 +75,9 @@ void setup() {
   //Auto transitions patterns after a set period of time
   lx.enableAutoTransition(3*MINUTES);
   
+  //send data to leds
+  output = buildOutput();
+  
   // Adds UI elements -- COMMENT all of this out if running on Linux in a headless environment
   size(800, 600, P3D);
   lx.ui.addLayer(
@@ -96,15 +90,9 @@ void setup() {
   );
   
   
-  //Initializes TotalControl library and remaps LX points to physical arrangement of P9813 LEDs
-  //If you only want to run the UI, comment out all TotalControl related stuff.
-  p9813Output();
-  
 }
 
 
 void draw() {
   background(#292929);
-  //Sends P3LX model color values to LEDs! Party time!
-  tc.refresh(lx.getColors(), remap);
 }

@@ -1,38 +1,28 @@
-//Initializes TotalControl library and manually remaps P3LX points to physical arrangement of p9813 LEDs
+//Outputs 
 
-void p9813Output () {
+FadecandyOutput buildOutput() {
+  FadecandyOutput output = null;
+  int[] pointIndices = buildPoints();
+  output = new FadecandyOutput(lx, "127.0.0.1", 7890, pointIndices);
   
-  //Remaps LX pixels to physical arrangement of p9813 LEDs
-  //This installation's arrangement was crazy complex, hence the manual remap.
-  //If your arrangement is simpler, you could do the job with a for loop or some other function.
-  
-  remap[285] = 399;  remap[286] = 379;  remap[297] = 359;  remap[298] = 339;  remap[309] = 319;  remap[310] = 299;  remap[321] = 279;  remap[322] = 259;  remap[333] = 239;  remap[334] = 219;  remap[345] = 199;  remap[346] = 179;  remap[357] = 159;  remap[358] = 139;  remap[369] = 119;  remap[370] = 99;  remap[381] = 79;  remap[382] = 59;  remap[393] = 39;  remap[394] = 19;
-  remap[284] = 398;  remap[287] = 378;  remap[296] = 358;  remap[299] = 338;  remap[308] = 318;  remap[311] = 298;  remap[320] = 278;  remap[323] = 258;  remap[332] = 238;  remap[335] = 218;  remap[344] = 198;  remap[347] = 178;  remap[356] = 158;  remap[359] = 138;  remap[368] = 118;  remap[371] = 98;  remap[380] = 78;  remap[383] = 58;  remap[392] = 38;  remap[395] = 18;
-  remap[283] = 397;  remap[288] = 377;  remap[295] = 357;  remap[300] = 337;  remap[307] = 317;  remap[312] = 297;  remap[319] = 277;  remap[324] = 257;  remap[331] = 237;  remap[336] = 217;  remap[343] = 197;  remap[348] = 177;  remap[355] = 157;  remap[360] = 137;  remap[367] = 117;  remap[372] = 97;  remap[379] = 77;  remap[384] = 57;  remap[391] = 37;  remap[396] = 17;
-  remap[282] = 396;  remap[289] = 376;  remap[294] = 356;  remap[301] = 336;  remap[306] = 316;  remap[313] = 296;  remap[318] = 276;  remap[325] = 256;  remap[330] = 236;  remap[337] = 216;  remap[342] = 196;  remap[349] = 176;  remap[354] = 156;  remap[361] = 136;  remap[366] = 116;  remap[373] = 96;  remap[378] = 76;  remap[385] = 56;  remap[390] = 36;  remap[397] = 16;
-  remap[281] = 395;  remap[290] = 375;  remap[293] = 355;  remap[302] = 335;  remap[305] = 315;  remap[314] = 295;  remap[317] = 275;  remap[326] = 255;  remap[329] = 235;  remap[338] = 215;  remap[341] = 195;  remap[350] = 175;  remap[353] = 155;  remap[362] = 135;  remap[365] = 115;  remap[374] = 95;  remap[377] = 75;  remap[386] = 55;  remap[389] = 35;  remap[398] = 15;
-  remap[280] = 394;  remap[291] = 374;  remap[292] = 354;  remap[303] = 334;  remap[304] = 314;  remap[315] = 294;  remap[316] = 274;  remap[327] = 254;  remap[328] = 234;  remap[339] = 214;  remap[340] = 194;  remap[351] = 174;  remap[352] = 154;  remap[363] = 134;  remap[364] = 114;  remap[375] = 94;  remap[376] = 74;  remap[387] = 54;  remap[388] = 34;  remap[399] = 14;
-  remap[279] = 393;  remap[264] = 373;  remap[263] = 353;  remap[248] = 333;  remap[247] = 313;  remap[232] = 293;  remap[231] = 273;  remap[216] = 253;  remap[215] = 233;  remap[200] = 213;  remap[199] = 193;  remap[184] = 173;  remap[183] = 153;  remap[168] = 133;  remap[167] = 113;  remap[152] = 93;  remap[151] = 73;  remap[136] = 53;  remap[135] = 33;  remap[120] = 13;
-  remap[278] = 392;  remap[265] = 372;  remap[262] = 352;  remap[249] = 332;  remap[246] = 312;  remap[233] = 292;  remap[230] = 272;  remap[217] = 252;  remap[214] = 232;  remap[201] = 212;  remap[198] = 192;  remap[185] = 172;  remap[182] = 152;  remap[169] = 132;  remap[166] = 112;  remap[153] = 92;  remap[150] = 72;  remap[137] = 52;  remap[134] = 32;  remap[121] = 12;
-  remap[277] = 391;  remap[266] = 371;  remap[261] = 351;  remap[250] = 331;  remap[245] = 311;  remap[234] = 291;  remap[229] = 271;  remap[218] = 251;  remap[213] = 231;  remap[202] = 211;  remap[197] = 191;  remap[186] = 171;  remap[181] = 151;  remap[170] = 131;  remap[165] = 111;  remap[154] = 91;  remap[149] = 71;  remap[138] = 51;  remap[133] = 31;  remap[122] = 11;
-  remap[276] = 390;  remap[267] = 370;  remap[260] = 350;  remap[251] = 330;  remap[244] = 310;  remap[235] = 290;  remap[228] = 270;  remap[219] = 250;  remap[212] = 230;  remap[203] = 210;  remap[196] = 190;  remap[187] = 170;  remap[180] = 150;  remap[171] = 130;  remap[164] = 110;  remap[155] = 90;  remap[148] = 70;  remap[139] = 50;  remap[132] = 30;  remap[123] = 10;
-  remap[275] = 389;  remap[268] = 369;  remap[259] = 349;  remap[252] = 329;  remap[243] = 309;  remap[236] = 289;  remap[227] = 269;  remap[220] = 249;  remap[211] = 229;  remap[204] = 209;  remap[195] = 189;  remap[188] = 169;  remap[179] = 149;  remap[172] = 129;  remap[163] = 109;  remap[156] = 89;  remap[147] = 69;  remap[140] = 49;  remap[131] = 29;  remap[124] = 9;
-  remap[274] = 388;  remap[269] = 368;  remap[258] = 348;  remap[253] = 328;  remap[242] = 308;  remap[237] = 288;  remap[226] = 268;  remap[221] = 248;  remap[210] = 228;  remap[205] = 208;  remap[194] = 188;  remap[189] = 168;  remap[178] = 148;  remap[173] = 128;  remap[162] = 108;  remap[157] = 88;  remap[146] = 68;  remap[141] = 48;  remap[130] = 28;  remap[125] = 8;
-  remap[273] = 387;  remap[270] = 367;  remap[257] = 347;  remap[254] = 327;  remap[241] = 307;  remap[238] = 287;  remap[225] = 267;  remap[222] = 247;  remap[209] = 227;  remap[206] = 207;  remap[193] = 187;  remap[190] = 167;  remap[177] = 147;  remap[174] = 127;  remap[161] = 107;  remap[158] = 87;  remap[145] = 67;  remap[142] = 47;  remap[129] = 27;  remap[126] = 7;
-  remap[272] = 386;  remap[271] = 366;  remap[256] = 346;  remap[255] = 326;  remap[240] = 306;  remap[239] = 286;  remap[224] = 266;  remap[223] = 246;  remap[208] = 226;  remap[207] = 206;  remap[192] = 186;  remap[191] = 166;  remap[176] = 146;  remap[175] = 126;  remap[160] = 106;  remap[159] = 86;  remap[144] = 66;  remap[143] = 46;  remap[128] = 26;  remap[127] = 6;
-  remap[5] = 385;  remap[6] = 365;  remap[17] = 345;  remap[18] = 325;  remap[29] = 305;  remap[30] = 285;  remap[41] = 265;  remap[42] = 245;  remap[53] = 225;  remap[54] = 205;  remap[65] = 185;  remap[66] = 165;  remap[77] = 145;  remap[78] = 125;  remap[89] = 105;  remap[90] = 85;  remap[101] = 65;  remap[102] = 45;  remap[113] = 25;  remap[114] = 5;
-  remap[4] = 384;  remap[7] = 364;  remap[16] = 344;  remap[19] = 324;  remap[28] = 304;  remap[31] = 284;  remap[40] = 264;  remap[43] = 244;  remap[52] = 224;  remap[55] = 204;  remap[64] = 184;  remap[67] = 164;  remap[76] = 144;  remap[79] = 124;  remap[88] = 104;  remap[91] = 84;  remap[100] = 64;  remap[103] = 44;  remap[112] = 24;  remap[115] = 4;
-  remap[3] = 383;  remap[8] = 363;  remap[15] = 343;  remap[20] = 323;  remap[27] = 303;  remap[32] = 283;  remap[39] = 263;  remap[44] = 243;  remap[51] = 223;  remap[56] = 203;  remap[63] = 183;  remap[68] = 163;  remap[75] = 143;  remap[80] = 123;  remap[87] = 103;  remap[92] = 83;  remap[99] = 63;  remap[104] = 43;  remap[111] = 23;  remap[116] = 3;
-  remap[2] = 382;  remap[9] = 362;  remap[14] = 342;  remap[21] = 322;  remap[26] = 302;  remap[33] = 282;  remap[38] = 262;  remap[45] = 242;  remap[50] = 222;  remap[57] = 202;  remap[62] = 182;  remap[69] = 162;  remap[74] = 142;  remap[81] = 122;  remap[86] = 102;  remap[93] = 82;  remap[98] = 62;  remap[105] = 42;  remap[110] = 22;  remap[117] = 2;
-  remap[1] = 381;  remap[10] = 361;  remap[13] = 341;  remap[22] = 321;  remap[25] = 301;  remap[34] = 281;  remap[37] = 261;  remap[46] = 241;  remap[49] = 221;  remap[58] = 201;  remap[61] = 181;  remap[70] = 161;  remap[73] = 141;  remap[82] = 121;  remap[85] = 101;  remap[94] = 81;  remap[97] = 61;  remap[106] = 41;  remap[109] = 21;  remap[118] = 1;
-  remap[0] = 380;  remap[11] = 360;  remap[12] = 340;  remap[23] = 320;  remap[24] = 300;  remap[35] = 280;  remap[36] = 260;  remap[47] = 240;  remap[48] = 220;  remap[59] = 200;  remap[60] = 180;  remap[71] = 160;  remap[72] = 140;  remap[83] = 120;  remap[84] = 100;  remap[95] = 80;  remap[96] = 60;  remap[107] = 40;  remap[108] = 20;  remap[119] = 0;
-    
-  
-  //initialize LEDs
-  int status = tc.open(1, 400);
-  if (status != 0) {
-    tc.printError(status);
-    exit();
+  lx.addOutput(output);
+  return output;
+}
+
+
+//function that maps point indicse to pixels on led strip
+int[] buildPoints() {
+  int pointIndices[] = new int[400];
+  int i = 0;
+  for (int strips = 0; strips < 20; strips = strips + 1) {
+    for (int pixels_per_strip = 0; pixels_per_strip < 20; pixels_per_strip = pixels_per_strip + 1) {
+      if (strips % 2 == 1) { 
+          pointIndices[i] = (((30-1)-pixels_per_strip)+(30*strips));
+      } else {
+          pointIndices[i] = (pixels_per_strip+30*strips);
+      }
+      i++;
+    } 
   }
-  
+  return pointIndices; 
 }
