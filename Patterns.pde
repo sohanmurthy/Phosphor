@@ -235,3 +235,66 @@ class Quilt extends LXPattern {
     lx.cycleBaseHue(6*MINUTES);
   }
 }
+
+
+
+class Shuffle extends LXPattern {
+
+  class Shuff extends LXLayer {
+
+    private final Click click = new Click(random(7000, 13000));
+    private final QuadraticEnvelope px = new QuadraticEnvelope(0, 0, 0).setEase(QuadraticEnvelope.Ease.BOTH);
+    private final QuadraticEnvelope py = new QuadraticEnvelope(0, 0, 0).setEase(QuadraticEnvelope.Ease.BOTH);
+    ;  
+    private final SinLFO size = new SinLFO(4.3*INCHES, 9*INCHES, random(3000, 9000));
+    private final SinLFO sat = new SinLFO(45, 140, random(6000, 17000));
+
+    Shuff(LX lx) {
+      super(lx);
+      addModulator(click).start();
+      addModulator(px);
+      addModulator(py);
+      addModulator(size).start();
+      addModulator(sat).start();
+      init();
+    }
+
+    public void run(double deltaMs) {
+      if (click.click()) {
+        init();
+      }
+      for (LXPoint p : model.points) {
+        
+        //Squares
+      float dx = abs(p.x - px.getValuef());
+      float dy = abs(p.y - py.getValuef());
+      float b = 100 - (100/size.getValuef()) * max(dx, dy);
+      
+        if (b > 0) {
+          blendColor(p.index, LXColor.hsb(
+            (lx.getBaseHuef() + abs(p.x - model.cx) / model.xRange * 180 + abs(p.y - model.cy) / model.yRange * 180) % 360, 
+            min(100, sat.getValuef()), 
+            b), LXColor.Blend.LIGHTEST
+            );
+        }
+      }
+      lx.cycleBaseHue(4*MINUTES);
+    }
+
+    private void init() {
+      px.setRangeFromHereTo(random(model.xMin, model.xMax)).setPeriod(random(3800, 6000)).start();
+      py.setRangeFromHereTo(random(model.xMin, model.xMax)).setPeriod(random(3800, 6000)).start();
+    }
+  }
+
+  Shuffle(LX lx) {
+    super(lx);
+    for (int i = 0; i < 8; ++i) {
+      addLayer(new Shuff(lx));
+    }
+  }
+
+  public void run(double deltaMs) {
+    setColors(#000000);
+  }
+}

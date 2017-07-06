@@ -39,11 +39,12 @@ void setup() {
   
   // Set the patterns
   lx.setPatterns(new LXPattern[] {
-    
+     new AminoLogo(lx),
+    new Shuffle(lx),
+    new Squares(lx),
     new ColorWaves(lx),
     new Quilt(lx),
-    new Squares(lx),
-    new AminoLogo(lx),
+   
 
   });
   
@@ -53,12 +54,12 @@ void setup() {
     p.setTransition(multiply);
   }
   //Auto transitions patterns after a set period of time
-  lx.enableAutoTransition(3*MINUTES);
+  lx.enableAutoTransition(5*MINUTES);
   
   //output to LEDs
   output = buildOutput();
   
-  // Adds UI elements -- COMMENT all of this out if running on Linux in a headless environment
+  // Adds UI elements for simulation -- COMMENT all of this out if running on Linux in a headless environment
   size(800, 600, P3D);
   lx.ui.addLayer(
     new UI3dContext(lx.ui) 
