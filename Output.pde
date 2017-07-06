@@ -1,4 +1,4 @@
-//Outputs 
+//Connects to local Fadecandy server and maps P3LX points to physical pixels 
 
 FadecandyOutput buildOutput() {
   FadecandyOutput output = null;

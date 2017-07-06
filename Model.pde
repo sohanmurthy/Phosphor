@@ -9,7 +9,7 @@ static class Model extends LXModel {
   private static class Fixture extends LXAbstractFixture {
     
     private static final int MATRIX_SIZE = 20;
-    private static final int SPACING = 7;
+    private static final float SPACING = 2*INCHES;
     
     private Fixture() {
       // Generate positions of points on model
