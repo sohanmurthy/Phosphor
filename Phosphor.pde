@@ -39,7 +39,8 @@ void setup() {
   
   // Set the patterns
   lx.setPatterns(new LXPattern[] {
-     new AminoLogo(lx),
+    
+    new AminoLogo(lx),
     new Shuffle(lx),
     new Squares(lx),
     new ColorWaves(lx),
