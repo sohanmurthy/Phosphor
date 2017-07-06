@@ -10,7 +10,7 @@ FadecandyOutput buildOutput() {
 }
 
 
-//function that maps point indicse to pixels on led strip
+//function that maps point indices to pixels on led strip
 int[] buildPoints() {
   int pointIndices[] = new int[400];
   int i = 0;

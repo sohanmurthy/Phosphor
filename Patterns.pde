@@ -11,9 +11,6 @@ class AminoLogo extends LXPattern{
   class Amino extends LXLayer {
  
   PImage img;
-  int xPos = (int) model.xRange;
-  int yPos = (int) model.yRange;
-  
   
   Amino(LX lx){
     super(lx);
