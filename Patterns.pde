@@ -238,7 +238,7 @@ class Shuffle extends LXPattern {
     private final QuadraticEnvelope px = new QuadraticEnvelope(0, 0, 0).setEase(QuadraticEnvelope.Ease.BOTH);
     private final QuadraticEnvelope py = new QuadraticEnvelope(0, 0, 0).setEase(QuadraticEnvelope.Ease.BOTH);
     ;  
-    private final SinLFO size = new SinLFO(5*INCHES, 10*INCHES, random(3000, 9000));
+    private final SinLFO size = new SinLFO(5*INCHES, 10*INCHES, random(6000, 9600));
     private final SinLFO sat = new SinLFO(45, 140, random(6000, 17000));
 
     Shuff(LX lx) {
@@ -292,32 +292,37 @@ class Shuffle extends LXPattern {
 }
 
 
-
-
-class Popups extends LXPattern {
+class Sequencer extends LXPattern {
+  
+  final float size = 5;
+  final float wth = 3;
+  final float vLow = 2;
+  final float vHigh = 12; 
+  final float acc = 3;
+  final int num = 7;
  
-  class Popup extends LXLayer {
+  class SequenceUp extends LXLayer {
     
     private final Accelerator xPos = new Accelerator(0, 0, 0);
-    private final Accelerator yPos = new Accelerator(0, 10, 2);
-    private final float expand;
+    private final Accelerator yPos = new Accelerator(0, 0, acc);
+     
     private final int hOffset;
 
-    Popup(LX lx, int o) {
+    SequenceUp(LX lx, int o) {
       super(lx);
       addModulator(xPos).start();
       addModulator(yPos).start();
       init();
-      expand = random(5,45);
+      
       hOffset = o;
     }
 
     public void run(double deltaMs) {
       boolean touched = false;
       for (LXPoint p : model.points) {
-          float dx = abs(p.x/2 - xPos.getValuef());
-          float dy = abs(p.y*1.4 - yPos.getValuef());
-          float b = 100 - (100/constrain(((int) yPos.getValue()-expand), 6,12)) * max(dx, dy);
+          float dx = abs(p.x - xPos.getValuef());
+          float dy = abs(p.y/wth - yPos.getValuef());
+          float b = 100 - (100/size) * max(dx, dy);
         if (b > 0) {
           touched = true;
           blendColor(p.index, LXColor.hsb(
@@ -332,19 +337,68 @@ class Popups extends LXPattern {
     }
 
     private void init() {
-      xPos.setValue(random(1, 19));
-      yPos.setValue(random(model.yMin-5, model.yMin-10));      
-      yPos.setVelocity(random(2, 8));
-      //yPos.setAcceleration(random(4,6));
+      xPos.setValue(random(model.xMin, model.xMax));
+      yPos.setValue(random(model.yMin-5, model.yMin-10));         
+      yPos.setVelocity(random(vLow, vHigh));
+      
+    }
+  }
+  
+  
+  
+  class SequenceDown extends LXLayer {
+    
+    private final Accelerator xPos = new Accelerator(0, 0, 0);
+    private final Accelerator yPos = new Accelerator(0, 0 , -acc);
+    
+    private final int hOffset;
+
+    SequenceDown(LX lx, int o) {
+      super(lx);
+      addModulator(xPos).start();
+      addModulator(yPos).start();
+      init();
+      
+      hOffset = o;
+    }
+
+    public void run(double deltaMs) {
+      boolean touched = false;
+      for (LXPoint p : model.points) {
+          float dx = abs(p.x - xPos.getValuef());
+          float dy = abs(p.y/wth - yPos.getValuef());
+          float b = 100 - (100/size) * max(dx, dy);
+        if (b > 0) {
+          touched = true;
+          blendColor(p.index, LXColor.hsb(
+            (lx.getBaseHuef() + hOffset) % 360, 
+            35, 
+            b), LXColor.Blend.LIGHTEST);
+        }
+      }
+      if (!touched) {
+        init();
+      }
+    }
+
+    private void init() {
+      xPos.setValue(random(model.xMin, model.xMax));
+      yPos.setValue(random(20, 60));      
+      yPos.setVelocity(random(-vLow, -vHigh));
+      
     }
   }
  
 
-  Popups(LX lx) {
+  Sequencer(LX lx) {
     super(lx);
-    for (int i = 0; i < 5; ++i) {
-      addLayer(new Popup(lx, i*23));
+    for (int i = 0; i < num; ++i) {
+      addLayer(new SequenceUp(lx, i*23));
     }
+    for (int i = 0; i < num; ++i) {
+      addLayer(new SequenceDown(lx, i*23));
+    }
+    println(model.yMin);
   }
 
   public void run(double deltaMs) {

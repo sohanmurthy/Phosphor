@@ -37,7 +37,7 @@ void setup() {
   lx.setPatterns(new LXPattern[] {
     
     
-    new Popups(lx),
+    new Sequencer(lx),
     new Shuffle(lx),    
     new Quilt(lx),
     new Squares(lx),
