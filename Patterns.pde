@@ -290,3 +290,66 @@ class Shuffle extends LXPattern {
     setColors(#000000);
   }
 }
+
+
+
+
+class Popups extends LXPattern {
+ 
+  class Popup extends LXLayer {
+    
+    private final Accelerator xPos = new Accelerator(0, 0, 0);
+    private final Accelerator yPos = new Accelerator(0, 10, 2);
+    private final float expand;
+    private final int hOffset;
+
+    Popup(LX lx, int o) {
+      super(lx);
+      addModulator(xPos).start();
+      addModulator(yPos).start();
+      init();
+      expand = random(5,45);
+      hOffset = o;
+    }
+
+    public void run(double deltaMs) {
+      boolean touched = false;
+      for (LXPoint p : model.points) {
+          float dx = abs(p.x/2 - xPos.getValuef());
+          float dy = abs(p.y*1.4 - yPos.getValuef());
+          float b = 100 - (100/constrain(((int) yPos.getValue()-expand), 6,12)) * max(dx, dy);
+        if (b > 0) {
+          touched = true;
+          blendColor(p.index, LXColor.hsb(
+            (lx.getBaseHuef() + hOffset) % 360, 
+            35, 
+            b), LXColor.Blend.LIGHTEST);
+        }
+      }
+      if (!touched) {
+        init();
+      }
+    }
+
+    private void init() {
+      xPos.setValue(random(1, 19));
+      yPos.setValue(random(model.yMin-5, model.yMin-10));      
+      yPos.setVelocity(random(2, 8));
+      //yPos.setAcceleration(random(4,6));
+    }
+  }
+ 
+
+  Popups(LX lx) {
+    super(lx);
+    for (int i = 0; i < 5; ++i) {
+      addLayer(new Popup(lx, i*23));
+    }
+  }
+
+  public void run(double deltaMs) {
+    setColors(#000000);
+  }
+    
+  
+}
