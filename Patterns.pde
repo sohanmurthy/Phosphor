@@ -2,9 +2,6 @@
 
 Amino Logo
 
-A sharp corporate logo
-set against sparkly stars
-
 **************************/
 class AminoLogo extends LXPattern{
     
@@ -78,8 +75,7 @@ class AminoLogo extends LXPattern{
 
 Squares
 
-
-****************************/
+***************************/
 
 class Squares extends LXPattern {
   
@@ -129,8 +125,7 @@ class Squares extends LXPattern {
 
 ColorWaves
 
-
-********************/
+*******************/
 
 class ColorWaves extends LXPattern {
  
@@ -193,6 +188,7 @@ ColorWaves(LX lx) {
 Quilt
 
 **************************/
+
 class Quilt extends LXPattern {
 
   final SinLFO[] positions = new SinLFO[80];
@@ -229,10 +225,9 @@ class Quilt extends LXPattern {
         max(0, 100 - 100 / w2 * model.yRange * abs(p.y/model.yRange - positions[(int) (p.x % positions.length)].getValuef()))
         ));
     }
-    lx.cycleBaseHue(6*MINUTES);
+    lx.cycleBaseHue(5*MINUTES);
   }
 }
-
 
 
 class Shuffle extends LXPattern {
@@ -275,7 +270,7 @@ class Shuffle extends LXPattern {
             );
         }
       }
-      lx.cycleBaseHue(4*MINUTES);
+      lx.cycleBaseHue(8*MINUTES);
     }
 
     private void init() {
