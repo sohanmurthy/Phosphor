@@ -3,6 +3,7 @@
 Amino Logo
 
 **************************/
+
 class AminoLogo extends LXPattern{
     
   class Amino extends LXLayer {
@@ -172,8 +173,8 @@ class ColorWaves extends LXPattern {
 
 ColorWaves(LX lx) {
   super(lx);
-    addLayer(new ColorWave(lx, 0.8 , 8, 0, 50));
-    addLayer(new ColorWave(lx, 1.5, -8, 120, 50));
+    addLayer(new ColorWave(lx, 0.8 , 8, 0, 45));
+    addLayer(new ColorWave(lx, 1.5, -8, 120, 45));
 }
  
   public void run(double deltaMs) {
@@ -225,9 +226,15 @@ class Quilt extends LXPattern {
         max(0, 100 - 100 / w2 * model.yRange * abs(p.y/model.yRange - positions[(int) (p.x % positions.length)].getValuef()))
         ));
     }
-    lx.cycleBaseHue(5*MINUTES);
+    lx.cycleBaseHue(4.667*MINUTES);
   }
 }
+
+/*************************
+
+Shuffle
+
+**************************/
 
 
 class Shuffle extends LXPattern {
@@ -270,7 +277,7 @@ class Shuffle extends LXPattern {
             );
         }
       }
-      lx.cycleBaseHue(8*MINUTES);
+      lx.cycleBaseHue(7.125*MINUTES);
     }
 
     private void init() {
@@ -291,24 +298,30 @@ class Shuffle extends LXPattern {
   }
 }
 
+/*************************
 
-class Sequencer extends LXPattern {
+Fountain
+
+**************************/
+
+
+class Fountain extends LXPattern {
   
-  final float size = 5;
-  final float wth = 3;
-  final float vLow = 2;
-  final float vHigh = 12; 
-  final float acc = 3;
-  final int num = 7;
+  final float size = 3;
+  final float wth = 10;
+  final float vLow = 2.8;
+  final float vHigh = 3.8; 
+  final float acc = -1.5;
+  final int num = 15;
  
-  class SequenceUp extends LXLayer {
+  class Jet extends LXLayer {
     
     private final Accelerator xPos = new Accelerator(0, 0, 0);
     private final Accelerator yPos = new Accelerator(0, 0, acc);
      
     private final int hOffset;
 
-    SequenceUp(LX lx, int o) {
+    Jet(LX lx, int o) {
       super(lx);
       addModulator(xPos).start();
       addModulator(yPos).start();
@@ -326,79 +339,33 @@ class Sequencer extends LXPattern {
         if (b > 0) {
           touched = true;
           blendColor(p.index, LXColor.hsb(
-            (lx.getBaseHuef() + hOffset) % 360, 
-            35, 
+            (lx.getBaseHuef() + (dist(p.x, p.y, model.cx, model.yMin) / model.xRange) * 180) % 360,
+            45, 
             b), LXColor.Blend.LIGHTEST);
         }
       }
       if (!touched) {
         init();
       }
+      
+      lx.cycleBaseHue(3.3*MINUTES);
     }
 
     private void init() {
       xPos.setValue(random(model.xMin, model.xMax));
-      yPos.setValue(random(model.yMin-5, model.yMin-10));         
+      yPos.setValue(random(model.yMin-3, model.yMin-3));  
       yPos.setVelocity(random(vLow, vHigh));
       
     }
   }
   
-  
-  
-  class SequenceDown extends LXLayer {
-    
-    private final Accelerator xPos = new Accelerator(0, 0, 0);
-    private final Accelerator yPos = new Accelerator(0, 0 , -acc);
-    
-    private final int hOffset;
-
-    SequenceDown(LX lx, int o) {
-      super(lx);
-      addModulator(xPos).start();
-      addModulator(yPos).start();
-      init();
-      
-      hOffset = o;
-    }
-
-    public void run(double deltaMs) {
-      boolean touched = false;
-      for (LXPoint p : model.points) {
-          float dx = abs(p.x - xPos.getValuef());
-          float dy = abs(p.y/wth - yPos.getValuef());
-          float b = 100 - (100/size) * max(dx, dy);
-        if (b > 0) {
-          touched = true;
-          blendColor(p.index, LXColor.hsb(
-            (lx.getBaseHuef() + hOffset) % 360, 
-            35, 
-            b), LXColor.Blend.LIGHTEST);
-        }
-      }
-      if (!touched) {
-        init();
-      }
-    }
-
-    private void init() {
-      xPos.setValue(random(model.xMin, model.xMax));
-      yPos.setValue(random(20, 60));      
-      yPos.setVelocity(random(-vLow, -vHigh));
-      
-    }
-  }
  
 
-  Sequencer(LX lx) {
+  Fountain(LX lx) {
     super(lx);
     for (int i = 0; i < num; ++i) {
-      addLayer(new SequenceUp(lx, i*23));
+      addLayer(new Jet(lx, i*0));
     }
-    for (int i = 0; i < num; ++i) {
-      addLayer(new SequenceDown(lx, i*23));
-    }
-    println(model.yMin);
   }
 
   public void run(double deltaMs) {
