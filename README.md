@@ -2,8 +2,6 @@
 *Sohan Murthy*
 *2017*
 
-<img src="https://pbs.twimg.com/media/C1lj1e2UsAAk71E.jpg" width="400">
-
 PHOSPHOR is an LED art installation at [Amino's](https://www.amino.com) headquarters in San Francisco. This
 program controls 400 individually addressable LEDs through a variety of procedurally generated patterns,
 each designed to accent the workspace by their curious nature.
