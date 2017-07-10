@@ -1,8 +1,8 @@
-/*************************************************************
+/***************************************************************
 
 PHOSPHOR
 Sohan Murthy
-2016
+2017
 
 PHOSPHOR is an LED art installation at Amino's
 (www.amino.com) headquarters in San Francisco. This
@@ -17,7 +17,7 @@ and WS2811 LEDs.
 Special thanks to Mark Slee and Heron Arts for developing
 LX Studio and the P3LX library, which powers PHOSPHOR.
 
-**************************************************************/
+****************************************************************/
 
 import ddf.minim.*;
 

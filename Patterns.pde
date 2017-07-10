@@ -311,23 +311,20 @@ class Fountain extends LXPattern {
   final float wth = 10;
   final float vLow = 2.8;
   final float vHigh = 3.8; 
-  final float acc = -1.5;
+  final float gravity = -1.5;
   final int num = 15;
  
   class Jet extends LXLayer {
     
     private final Accelerator xPos = new Accelerator(0, 0, 0);
-    private final Accelerator yPos = new Accelerator(0, 0, acc);
+    private final Accelerator yPos = new Accelerator(0, 0, gravity);
      
-    private final int hOffset;
 
-    Jet(LX lx, int o) {
+    Jet(LX lx) {
       super(lx);
       addModulator(xPos).start();
       addModulator(yPos).start();
       init();
-      
-      hOffset = o;
     }
 
     public void run(double deltaMs) {
@@ -364,7 +361,7 @@ class Fountain extends LXPattern {
   Fountain(LX lx) {
     super(lx);
     for (int i = 0; i < num; ++i) {
-      addLayer(new Jet(lx, i*0));
+      addLayer(new Jet(lx));
     }
   }
 
