@@ -9,6 +9,8 @@ each designed to accent the workspace by their curious nature.
 
 The system consists of a Raspberry Pi 3, FadeCandy controller, and WS2811 LEDs.
 
+<img src="https://github.com/sohanmurthy/Phosphor/blob/master/img/PHOSPHOR_topology.png" width=70%>
+
 ### Installation:
 
 1. Download [Processing 3](https://processing.org/download/?processing)
