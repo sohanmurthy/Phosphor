@@ -8,7 +8,7 @@ each designed to accent the workspace by their curious nature.
 
 The system consists of a Raspberry Pi 3, FadeCandy controller, and WS2811 LEDs.
 
-###Installation:
+### Installation:
 
 1. Download [Processing 3](https://processing.org/download/?processing)
 2. Install [Fadecandy server](https://github.com/scanlime/fadecandy)
