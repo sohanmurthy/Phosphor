@@ -17,7 +17,7 @@ The system consists of a Raspberry Pi 3, FadeCandy controller, and WS2811 LEDs.
 2. Install [Fadecandy server](https://github.com/scanlime/fadecandy)
 3. Clone this repo into your Processing sketchbook folder
 
-Special thanks to [Mark Slee](https://github.com/mcslee/) & [Heron Arts](https://github.com/heronarts/) for developing [LX Studio](https://lx.studio) and the [P3LX library]((https://github.com/heronarts/P3LX)), which powers PHOSPHOR.
+Special thanks to [Mark Slee](https://github.com/mcslee/) & [Heron Arts](https://github.com/heronarts/) for developing [LX Studio](http://lx.studio) and the [P3LX library]((https://github.com/heronarts/P3LX)), which powers PHOSPHOR.
 <br>
 <br>
 <img src="https://github.com/sohanmurthy/Phosphor/blob/master/img/phosphor1.jpg" width = 70%>
