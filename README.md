@@ -7,7 +7,7 @@ PHOSPHOR is an LED art installation at [Amino's](https://www.amino.com) headquar
 program controls 400 individually addressable LEDs through a variety of procedurally generated patterns,
 each designed to accent the workspace by their curious nature.
 
-The system consists of a Raspberry Pi 3, FadeCandy controller, and WS2811 LEDs.
+The system consists of a Raspberry Pi 3, [FadeCandy controller](https://www.adafruit.com/product/1689), and WS2811 LEDs.
 
 <img src="https://github.com/sohanmurthy/Phosphor/blob/master/img/PHOSPHOR_topology.png" width=70%>
 
